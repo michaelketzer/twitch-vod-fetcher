@@ -1,0 +1,31 @@
+{
+  "name": "vod-fetcher",
+  "version": "1.0.0",
+  "description": "Twitch VOD fetcher for shokztv",
+  "main": "lib/index.js",
+  "repository": "git@github.com:michaelketzer/twitch-vod-fetcher.git",
+  "author": "Michael Ketzer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^14.14.31",
+    "@types/node-fetch": "^2.5.8",
+    "@types/redis": "^2.8.28",
+    "prettier": "^2.2.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node lib/index.js",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1",
+    "redis": "^3.0.2",
+    "twitch-api-v5": "^2.0.4"
+  }
+}
