@@ -59,7 +59,7 @@ async function checkVideos(): Promise<void> {
         }
       }
 
-      //await setObj(key, knownVoDs);
+      await setObj(key, knownVoDs);
     }
   });
 }
