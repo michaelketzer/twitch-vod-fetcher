@@ -1,7 +1,8 @@
+import { getObj, setObj } from './redis';
+
 import api from 'twitch-api-v5';
 import cfg from './config';
 import fetch from 'node-fetch';
-import { getObj } from './redis';
 
 api.clientID = cfg.clientId;
 
