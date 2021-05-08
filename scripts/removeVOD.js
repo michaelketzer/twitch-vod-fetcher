@@ -9,7 +9,7 @@ const argv = yargs
     year: {
       description: 'The VOD ids to be removed',
       alias: 'i',
-      type: 'number',
+      type: 'string',
     }
   })
   .help()
@@ -37,16 +37,16 @@ function removeVOD(vodIds) {
 
     const data = JSON.parse(reply) || {};
 
-    if (!data[vodId]) {
-      console.log('VOD id is unknown');
+    vodIds.forEach((id) => {
+      if (!data[id]) {
+        console.log('VOD id is unknown');
+      } else {
+        delete data[id]
+      }
+    });
+    client.set(key, JSON.stringify(data), (err) => {
       client.end(false);
-      return;
-    } else {
-      vodIds.forEach((id) => delete data[id]);
-      client.set(key, JSON.stringify(data), (err) => {
-        client.end(false);
-      });
-    }
+    });
   });
 }
 
