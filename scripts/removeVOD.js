@@ -5,15 +5,15 @@ const client = redis.createClient();
 
 
 const argv = yargs
-  .command('ids', 'The VOD id to be removed', {
+  .command('ids', 'The VOD ids to be removed', {
     year: {
-      description: 'The VOD id to be removed',
+      description: 'The VOD ids to be removed',
       alias: 'i',
       type: 'number',
     }
   })
   .help()
-  .demandOption(['id'], 'Please define a vod id with -i or -id')
+  .demandOption(['ids'], 'Please define a vod ids with -i or -ids')
   .alias('ids', 'i')
   .alias('help', 'h')
   .argv;
