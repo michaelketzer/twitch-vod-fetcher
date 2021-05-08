@@ -38,10 +38,11 @@ function removeVOD(vodIds) {
     const data = JSON.parse(reply) || {};
 
     vodIds.forEach((id) => {
-      if (!data[id]) {
+      const vodId = `v${id}`;
+      if (!data[vodId]) {
         console.log('VOD id is unknown');
       } else {
-        delete data[id]
+        delete data[vodId]
       }
     });
     client.set(key, JSON.stringify(data), (err) => {
