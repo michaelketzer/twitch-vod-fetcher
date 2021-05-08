@@ -5,7 +5,7 @@ const client = redis.createClient();
 
 
 const argv = yargs
-  .command('id', 'The VOD id to be removed', {
+  .command('ids', 'The VOD id to be removed', {
     year: {
       description: 'The VOD id to be removed',
       alias: 'i',
@@ -14,7 +14,7 @@ const argv = yargs
   })
   .help()
   .demandOption(['id'], 'Please define a vod id with -i or -id')
-  .alias('id', 'i')
+  .alias('ids', 'i')
   .alias('help', 'h')
   .argv;
 
@@ -28,7 +28,7 @@ client.on('error', (error) => {
 
 const key = 'twitch-vod-fetcher-data';
 
-function removeVOD(vodId) {
+function removeVOD(vodIds) {
   client.get(key, (err, reply) => {
     if (err) {
       console.error(err);
@@ -42,7 +42,7 @@ function removeVOD(vodId) {
       client.end(false);
       return;
     } else {
-      delete data[vodId];
+      vodIds.forEach((id) => delete data[id]);
       client.set(key, JSON.stringify(data), (err) => {
         client.end(false);
       });
@@ -50,4 +50,4 @@ function removeVOD(vodId) {
   });
 }
 
-removeVOD(argv.id);
+removeVOD(argv.ids.split(','));
