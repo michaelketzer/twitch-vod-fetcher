@@ -63,7 +63,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
-      - name: Restart VOD Fetcher
+      - name: Restart Fetcher
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: pm2 restart ${{ env.APP_LOCATION }}
